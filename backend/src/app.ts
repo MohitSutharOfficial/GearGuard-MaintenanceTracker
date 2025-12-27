@@ -3,14 +3,6 @@ import dotenv from 'dotenv';
 import express, { Application } from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import { errorHandler } from './middleware/error.middleware';
-import { notFoundHandler } from './middleware/notFound.middleware';
-import authRoutes from './routes/auth.routes';
-import equipmentRoutes from './routes/equipment.routes';
-import reportRoutes from './routes/report.routes';
-import requestRoutes from './routes/request.routes';
-import teamRoutes from './routes/team.routes';
-import userRoutes from './routes/user.routes';
 
 // Load environment variables
 dotenv.config();
@@ -45,17 +37,31 @@ app.get('/health', (_req, res) => {
 
 // API routes
 const apiVersion = process.env.API_VERSION || 'v1';
-app.use(`/api/${apiVersion}/auth`, authRoutes);
-app.use(`/api/${apiVersion}/equipment`, equipmentRoutes);
-app.use(`/api/${apiVersion}/requests`, requestRoutes);
-app.use(`/api/${apiVersion}/teams`, teamRoutes);
-app.use(`/api/${apiVersion}/users`, userRoutes);
-app.use(`/api/${apiVersion}/reports`, reportRoutes);
+
+// Test endpoint
+app.get(`/api/${apiVersion}/test`, (_req, res) => {
+  res.json({
+    success: true,
+    message: 'API is working!',
+    timestamp: new Date().toISOString(),
+  });
+});
 
 // 404 handler
-app.use(notFoundHandler);
+app.use((_req, res) => {
+  res.status(404).json({
+    success: false,
+    message: 'Route not found',
+  });
+});
 
 // Global error handler
-app.use(errorHandler);
+app.use((err: any, _req: any, res: any, _next: any) => {
+  console.error(err.stack);
+  res.status(err.status || 500).json({
+    success: false,
+    message: err.message || 'Internal server error',
+  });
+});
 
 export default app;

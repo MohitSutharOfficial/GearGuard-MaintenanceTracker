@@ -1,17 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+// Database placeholder (Prisma removed)
+// If you need database functionality, reinstall Prisma and configure it
 
-const prisma = new PrismaClient({
-  log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
-});
+console.log('ℹ️  Database module (Prisma) not configured');
 
-// Test database connection
-prisma.$connect()
-  .then(() => {
-    console.log('✅ Database connected successfully');
-  })
-  .catch((error: any) => {
-    console.error('❌ Database connection failed:', error);
-    process.exit(1);
-  });
-
-export default prisma;
+export default null;

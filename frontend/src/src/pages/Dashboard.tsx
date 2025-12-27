@@ -1,5 +1,4 @@
 import { CheckCircle, Clock, Package, Wrench } from 'lucide-react';
-import Card from '../components/ui/Card';
 import { useApp } from '../context/AppContext';
 
 export default function Dashboard() {
@@ -117,7 +116,7 @@ export default function Dashboard() {
               </div>
             ))}
           </div>
-        </Card>
+        </div>
       </div>
     </div>
   );
