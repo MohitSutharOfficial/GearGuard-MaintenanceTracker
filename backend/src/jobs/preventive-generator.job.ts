@@ -12,7 +12,7 @@ export const startPreventiveGeneratorJob = () => {
       logger.info('Running preventive maintenance generator job');
 
       const equipment = await prisma.equipment.findMany({
-        where: { status: 'OPERATIONAL' },
+        where: { status: 'ACTIVE' as any },
         include: { maintenanceTeam: true },
       });
 
@@ -37,11 +37,11 @@ export const startPreventiveGeneratorJob = () => {
             data: {
               subject: `Preventive Maintenance - ${eq.name}`,
               description: 'Routine preventive maintenance',
-              type: 'PREVENTIVE',
-              priority: 'MEDIUM',
+              type: 'PREVENTIVE' as any,
+              priority: 'MEDIUM' as any,
               equipmentId: eq.id,
               scheduledDate,
-              stage: 'NEW',
+              stage: 'NEW' as any,
             },
           });
 

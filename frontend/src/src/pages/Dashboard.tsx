@@ -26,13 +26,13 @@ export default function Dashboard() {
       label: 'Active Equipment', 
       value: stats.activeEquipment, 
       icon: CheckCircle, 
-      color: 'bg-green-500' 
+      color: 'bg-emerald-500' 
     },
     { 
       label: 'New Requests', 
       value: stats.newRequests, 
       icon: Clock, 
-      color: 'bg-yellow-500' 
+      color: 'bg-amber-500' 
     },
     { 
       label: 'In Progress', 
@@ -45,60 +45,58 @@ export default function Dashboard() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600 mt-2">Overview of your maintenance operations</p>
+        <h1 className="text-2xl font-semibold text-odoo-gray-900">Dashboard</h1>
+        <p className="text-sm text-odoo-gray-600 mt-1">Overview of your maintenance operations</p>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         {statCards.map((stat) => {
           const Icon = stat.icon;
           return (
-            <Card key={stat.label} padding={false} className="overflow-hidden">
-              <div className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-gray-600 mb-1">{stat.label}</p>
-                    <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
-                  </div>
-                  <div className={`w-12 h-12 ${stat.color} rounded-lg flex items-center justify-center`}>
-                    <Icon size={24} className="text-white" />
-                  </div>
+            <div key={stat.label} className="odoo-card p-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs text-odoo-gray-600 mb-1">{stat.label}</p>
+                  <p className="text-2xl font-semibold text-odoo-gray-900">{stat.value}</p>
+                </div>
+                <div className={`w-10 h-10 ${stat.color} rounded flex items-center justify-center`}>
+                  <Icon size={20} className="text-white" />
                 </div>
               </div>
-            </Card>
+            </div>
           );
         })}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Recent Requests */}
-        <Card>
-          <h2 className="text-xl font-bold mb-4">Recent Requests</h2>
-          <div className="space-y-3">
+        <div className="odoo-card p-4">
+          <h2 className="text-base font-semibold mb-3 text-odoo-gray-900">Recent Requests</h2>
+          <div className="space-y-2">
             {requests.slice(0, 5).map(request => (
-              <div key={request.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <div>
-                  <p className="font-medium">{request.subject}</p>
-                  <p className="text-sm text-gray-600">{request.equipmentName}</p>
+              <div key={request.id} className="flex items-center justify-between p-2.5 bg-odoo-gray-50 rounded hover:bg-odoo-gray-100 transition">
+                <div className="min-w-0">
+                  <p className="font-medium text-sm text-odoo-gray-900 truncate">{request.subject}</p>
+                  <p className="text-xs text-odoo-gray-600 truncate">{request.equipmentName}</p>
                 </div>
-                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  request.stage === 'new' ? 'bg-blue-100 text-blue-800' :
-                  request.stage === 'in-progress' ? 'bg-yellow-100 text-yellow-800' :
-                  request.stage === 'repaired' ? 'bg-green-100 text-green-800' :
-                  'bg-red-100 text-red-800'
+                <span className={`px-2 py-0.5 rounded text-xs font-medium whitespace-nowrap ml-2 ${
+                  request.stage === 'new' ? 'bg-blue-100 text-blue-700' :
+                  request.stage === 'in-progress' ? 'bg-amber-100 text-amber-700' :
+                  request.stage === 'repaired' ? 'bg-emerald-100 text-emerald-700' :
+                  'bg-red-100 text-red-700'
                 }`}>
                   {request.stage}
                 </span>
               </div>
             ))}
           </div>
-        </Card>
+        </div>
 
         {/* Equipment by Category */}
-        <Card>
-          <h2 className="text-xl font-bold mb-4">Equipment by Category</h2>
-          <div className="space-y-3">
+        <div className="odoo-card p-4">
+          <h2 className="text-base font-semibold mb-3 text-odoo-gray-900">Equipment by Category</h2>
+          <div className="space-y-2.5">
             {Object.entries(
               equipment.reduce((acc, eq) => {
                 acc[eq.category] = (acc[eq.category] || 0) + 1;
@@ -106,15 +104,15 @@ export default function Dashboard() {
               }, {} as Record<string, number>)
             ).map(([category, count]) => (
               <div key={category} className="flex items-center justify-between">
-                <span className="text-gray-700">{category}</span>
-                <div className="flex items-center gap-3">
-                  <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                <span className="text-sm text-odoo-gray-700">{category}</span>
+                <div className="flex items-center gap-2">
+                  <div className="w-32 h-1.5 bg-odoo-gray-200 rounded-full overflow-hidden">
                     <div 
                       className="h-full bg-odoo-primary rounded-full"
                       style={{ width: `${(count / equipment.length) * 100}%` }}
                     />
                   </div>
-                  <span className="font-bold text-gray-900 w-8 text-right">{count}</span>
+                  <span className="font-semibold text-sm text-odoo-gray-900 w-6 text-right">{count}</span>
                 </div>
               </div>
             ))}

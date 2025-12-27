@@ -2,20 +2,21 @@ import jwt from 'jsonwebtoken';
 import { authConfig } from '../config/auth';
 
 export interface JWTPayload {
+  id?: string;
   userId: string;
   email: string;
   role: string;
 }
 
 export const generateToken = (payload: JWTPayload): string => {
-  return jwt.sign(payload, authConfig.jwtSecret, {
-    expiresIn: authConfig.jwtExpiresIn,
+  return jwt.sign(payload, authConfig.jwtSecret as jwt.Secret, {
+    expiresIn: authConfig.jwtExpiresIn as any,
   });
 };
 
 export const generateRefreshToken = (payload: JWTPayload): string => {
-  return jwt.sign(payload, authConfig.jwtRefreshSecret, {
-    expiresIn: authConfig.jwtRefreshExpiresIn,
+  return jwt.sign(payload, authConfig.jwtRefreshSecret as jwt.Secret, {
+    expiresIn: authConfig.jwtRefreshExpiresIn as any,
   });
 };
 

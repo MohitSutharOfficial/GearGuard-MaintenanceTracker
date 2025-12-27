@@ -1,5 +1,5 @@
 export interface UserPayload {
-  id: number;
+  id: string;
   email: string;
   role: string;
 }
@@ -19,7 +19,7 @@ export interface RegisterRequest {
 export interface AuthResponse {
   token: string;
   user: {
-    id: number;
+    id: string;
     email: string;
     name: string;
     role: string;
@@ -27,17 +27,17 @@ export interface AuthResponse {
 }
 
 export interface EquipmentFilters {
-  categoryId?: number;
-  teamId?: number;
+  categoryId?: string;
+  teamId?: string;
   status?: string;
 }
 
 export interface RequestFilters {
   type?: string;
   stage?: string;
-  equipmentId?: number;
-  technicianId?: number;
-  teamId?: number;
+  equipmentId?: string;
+  technicianId?: string;
+  teamId?: string;
 }
 
 export interface CreateMaintenanceRequest {
@@ -45,8 +45,8 @@ export interface CreateMaintenanceRequest {
   description?: string;
   type: 'CORRECTIVE' | 'PREVENTIVE';
   priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
-  equipmentId: number;
-  technicianId?: number;
+  equipmentId: string;
+  technicianId?: string;
   scheduledDate?: Date;
   notes?: string;
 }
@@ -56,8 +56,8 @@ export interface UpdateMaintenanceRequest {
   description?: string;
   type?: 'CORRECTIVE' | 'PREVENTIVE';
   priority?: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
-  equipmentId?: number;
-  technicianId?: number;
+  equipmentId?: string;
+  technicianId?: string;
   scheduledDate?: Date;
   duration?: number;
   stage?: 'NEW' | 'IN_PROGRESS' | 'REPAIRED' | 'SCRAP';
