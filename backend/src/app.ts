@@ -4,6 +4,11 @@ import express, { Application } from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 
+// Import routes
+import equipmentRoutes from './routes/equipment.routes';
+import maintenanceRequestRoutes from './routes/maintenance-request.routes';
+import maintenanceTeamRoutes from './routes/maintenance-team.routes';
+
 // Load environment variables
 dotenv.config();
 
@@ -37,6 +42,11 @@ app.get('/health', (_req, res) => {
 
 // API routes
 const apiVersion = process.env.API_VERSION || 'v1';
+
+// Register routes
+app.use(`/api/${apiVersion}/equipment`, equipmentRoutes);
+app.use(`/api/${apiVersion}/maintenance-requests`, maintenanceRequestRoutes);
+app.use(`/api/${apiVersion}/maintenance-teams`, maintenanceTeamRoutes);
 
 // Test endpoint
 app.get(`/api/${apiVersion}/test`, (_req, res) => {

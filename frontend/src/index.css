@@ -1,0 +1,406 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Odoo Mode (Default ERP Style) - Always Active */
+  :root,
+  :root.light,
+  :root.odoo,
+  :root.system {
+    --bg-primary: #F0EEEE;
+    --bg-secondary: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border-color: #DDDDDD;
+  }
+
+  /* Dark Mode */
+  :root.dark {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #f3f4f6;
+    --text-secondary: #d1d5db;
+    --border-color: #404040;
+  }
+
+  :root.dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+
+  :root.dark .bg-white {
+    background-color: #2d2d2d !important;
+  }
+
+  :root.dark .bg-odoo-light {
+    background-color: #1a1a1a !important;
+  }
+
+  :root.dark .bg-odoo-gray-50 {
+    background-color: #1f1f1f !important;
+  }
+
+  :root.dark .bg-gray-50 {
+    background-color: #262626 !important;
+  }
+
+  :root.dark .bg-red-50 {
+    background-color: #450a0a !important;
+  }
+
+  :root.dark .bg-blue-50 {
+    background-color: #172554 !important;
+  }
+
+  :root.dark .bg-green-50 {
+    background-color: #052e16 !important;
+  }
+
+  /* Text colors for dark mode */
+  :root.dark .text-gray-900,
+  :root.dark .text-gray-800,
+  :root.dark .text-gray-700,
+  :root.dark .text-gray-600 {
+    color: #e5e7eb !important;
+  }
+
+  :root.dark .text-odoo-gray-500,
+  :root.dark .text-odoo-gray-600,
+  :root.dark .text-odoo-gray-700,
+  :root.dark .text-odoo-gray-800,
+  :root.dark .text-odoo-gray-900 {
+    color: #e5e7eb !important;
+  }
+
+  :root.dark .text-odoo-gray-400 {
+    color: #9ca3af !important;
+  }
+
+  :root.dark .text-red-900,
+  :root.dark .text-red-700,
+  :root.dark .text-red-600 {
+    color: #fca5a5 !important;
+  }
+
+  :root.dark .text-blue-900,
+  :root.dark .text-blue-700 {
+    color: #93c5fd !important;
+  }
+
+  :root.dark .text-green-900,
+  :root.dark .text-green-700 {
+    color: #86efac !important;
+  }
+
+  /* Border colors */
+  :root.dark .border-odoo-border,
+  :root.dark .border-gray-200,
+  :root.dark .border-gray-300,
+  :root.dark .border-red-200,
+  :root.dark .border-blue-200,
+  :root.dark .border-green-200 {
+    border-color: #404040 !important;
+  }
+
+  :root.dark .shadow-odoo,
+  :root.dark .shadow-odoo-md,
+  :root.dark .shadow-lg {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px -1px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Form inputs */
+  :root.dark input,
+  :root.dark select,
+  :root.dark textarea {
+    background-color: #1f1f1f !important;
+    border-color: #404040 !important;
+    color: #e5e7eb !important;
+  }
+
+  :root.dark input::placeholder,
+  :root.dark textarea::placeholder {
+    color: #6b7280 !important;
+  }
+
+  /* Buttons and badges */
+  :root.dark .bg-blue-100 {
+    background-color: #1e3a8a !important;
+  }
+
+  :root.dark .bg-amber-100 {
+    background-color: #78350f !important;
+  }
+
+  :root.dark .bg-emerald-100 {
+    background-color: #064e3b !important;
+  }
+
+  :root.dark .bg-purple-100 {
+    background-color: #581c87 !important;
+  }
+
+  :root.dark .bg-gray-100 {
+    background-color: #374151 !important;
+  }
+
+  :root.dark .text-blue-700 {
+    color: #93c5fd !important;
+  }
+
+  :root.dark .text-amber-700 {
+    color: #fcd34d !important;
+  }
+
+  :root.dark .text-emerald-700 {
+    color: #6ee7b7 !important;
+  }
+
+  :root.dark .text-purple-700 {
+    color: #d8b4fe !important;
+  }
+
+  :root.dark .text-gray-700 {
+    color: #d1d5db !important;
+  }
+
+  /* Kanban Board Dark Mode Styles */
+  :root.dark .kanban-card {
+    background-color: #2d2d2d !important;
+    border-color: inherit !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.6) !important;
+  }
+
+  :root.dark .kanban-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6), 0 2px 4px -2px rgba(0, 0, 0, 0.6) !important;
+  }
+
+  :root.dark .kanban-column {
+    background-color: rgba(31, 31, 31, 0.5) !important;
+  }
+
+  :root.dark .kanban-column-header {
+    border-bottom: 1px solid #404040 !important;
+  }
+
+  /* Column header backgrounds for dark mode */
+  :root.dark .bg-blue-50.kanban-column-header {
+    background-color: #1e3a8a !important;
+  }
+
+  :root.dark .bg-yellow-50.kanban-column-header {
+    background-color: #78350f !important;
+  }
+
+  :root.dark .bg-green-50.kanban-column-header {
+    background-color: #064e3b !important;
+  }
+
+  :root.dark .bg-red-50.kanban-column-header {
+    background-color: #7f1d1d !important;
+  }
+
+  /* Column header text colors for dark mode */
+  :root.dark .text-blue-900,
+  :root.dark .text-yellow-900,
+  :root.dark .text-green-900,
+  :root.dark .text-red-900 {
+    color: #f3f4f6 !important;
+  }
+
+  /* Card border colors for dark mode */
+  :root.dark .border-red-400 {
+    border-left-color: #f87171 !important;
+  }
+
+  :root.dark .border-yellow-400 {
+    border-left-color: #fbbf24 !important;
+  }
+
+  :root.dark .border-blue-400 {
+    border-left-color: #60a5fa !important;
+  }
+
+  :root.dark .border-green-400 {
+    border-left-color: #4ade80 !important;
+  }
+
+  /* Card backgrounds within cards */
+  :root.dark .bg-white\/50 {
+    background-color: rgba(55, 55, 55, 0.5) !important;
+  }
+
+  /* Progress bar background */
+  :root.dark .bg-odoo-gray-200 {
+    background-color: #404040 !important;
+  }
+
+  /* Drag handle hover */
+  :root.dark .hover\:bg-gray-100:hover {
+    background-color: #404040 !important;
+  }
+
+  /* Text color for equipment and details */
+  :root.dark .text-odoo-gray-600 {
+    color: #d1d5db !important;
+  }
+
+  body {
+    @apply bg-odoo-light font-sans antialiased text-odoo-gray-800;
+  }
+
+  * {
+    @apply border-odoo-border;
+  }
+
+  /* Hide Scrollbar */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer components {
+  /* Odoo-inspired Card */
+  .odoo-card {
+    @apply bg-white rounded border border-odoo-border shadow-odoo;
+  }
+
+  /* Odoo-inspired Buttons */
+  .odoo-button {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded border transition-all duration-150;
+  }
+
+  .odoo-button-primary {
+    @apply bg-[#714B67] text-white border-[#714B67] hover:bg-[#8B5E7F] hover:border-[#8B5E7F] shadow-sm;
+  }
+
+  .odoo-button-secondary {
+    @apply bg-white text-odoo-gray-700 border-odoo-border hover:bg-odoo-gray-50;
+  }
+
+  .odoo-button-link {
+    @apply text-[#714B67] hover:text-[#8B5E7F] border-transparent hover:border-transparent;
+  }
+
+  /* Odoo-inspired Form Inputs */
+  .odoo-input {
+    @apply w-full px-3 py-2 text-sm border border-odoo-border rounded bg-white focus:outline-none focus:ring-1 focus:ring-[#714B67] focus:border-[#714B67] transition-all;
+  }
+
+  .odoo-input-error {
+    @apply border-odoo-danger focus:ring-odoo-danger focus:border-odoo-danger;
+  }
+
+  .odoo-label {
+    @apply block text-sm font-medium text-odoo-gray-700 mb-1;
+  }
+
+  .odoo-label-required::after {
+    content: '*';
+    @apply text-odoo-danger ml-1;
+  }
+
+  /* Odoo-inspired Badges */
+  .odoo-badge {
+    @apply inline-flex items-center px-2 py-0.5 text-xs font-medium rounded;
+  }
+
+  .odoo-badge-success {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+
+  .odoo-badge-warning {
+    @apply bg-amber-100 text-amber-700;
+  }
+
+  .odoo-badge-danger {
+    @apply bg-red-100 text-red-700;
+  }
+
+  .odoo-badge-info {
+    @apply bg-blue-100 text-blue-700;
+  }
+
+  .odoo-badge-neutral {
+    @apply bg-odoo-gray-100 text-odoo-gray-700;
+  }
+
+  /* Odoo Form Group */
+  .odoo-form-group {
+    @apply mb-4;
+  }
+
+  /* Odoo Divider */
+  .odoo-divider {
+    @apply border-t border-odoo-border my-4;
+  }
+
+  .odoo-badge-info {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .kanban-card {
+    @apply bg-white rounded-lg shadow-sm border-l-4 p-4 mb-3 hover:shadow-md transition-all duration-200;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  .kanban-card:active {
+    user-select: none !important;
+  }
+
+  .kanban-column {
+    @apply bg-odoo-gray-50/30 rounded-b-lg p-3 min-h-[calc(100vh-300px)] transition-colors duration-200;
+  }
+
+  .kanban-column-header {
+    @apply rounded-t-lg px-4 py-3 font-semibold text-sm flex items-center justify-between shadow-sm;
+  }
+
+  /* Prevent text selection during drag operations */
+  .is-dragging {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+  }
+}
+
+@layer utilities {
+  /* Animations */
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out;
+  }
+}

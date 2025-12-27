@@ -1,6 +1,37 @@
 # GearGuard — The Ultimate Maintenance Tracker
+[▶️ **Watch Demo Video**](https://drive.google.com/drive/folders/1FsB9oJGWohWyksX_c2O68Hke4gXJDTRu?usp=drive_link)
 
-A comprehensive ERP-style maintenance management system built with React and Node.js, following Odoo design principles.
+## Screenshots
+
+![Screenshot 2025-12-28 103624.png](Screenshots/Screenshot%202025-12-28%20103624.png)
+![Screenshot 2025-12-28 103637.png](Screenshots/Screenshot%202025-12-28%20103637.png)
+![Screenshot 2025-12-28 103654.png](Screenshots/Screenshot%202025-12-28%20103654.png)
+![Screenshot 2025-12-28 103914.png](Screenshots/Screenshot%202025-12-28%20103914.png)
+![Screenshot 2025-12-28 103935.png](Screenshots/Screenshot%202025-12-28%20103935.png)
+![Screenshot 2025-12-28 103947.png](Screenshots/Screenshot%202025-12-28%20103947.png)
+![Screenshot 2025-12-28 103957.png](Screenshots/Screenshot%202025-12-28%20103957.png)
+![Screenshot 2025-12-28 104008.png](Screenshots/Screenshot%202025-12-28%20104008.png)
+![Screenshot 2025-12-28 104016.png](Screenshots/Screenshot%202025-12-28%20104016.png)
+![Screenshot 2025-12-28 104028.png](Screenshots/Screenshot%202025-12-28%20104028.png)
+![Screenshot 2025-12-28 104037.png](Screenshots/Screenshot%202025-12-28%20104037.png)
+![Screenshot 2025-12-28 104052.png](Screenshots/Screenshot%202025-12-28%20104052.png)
+![Screenshot 2025-12-28 104103.png](Screenshots/Screenshot%202025-12-28%20104103.png)
+![Screenshot 2025-12-28 104121.png](Screenshots/Screenshot%202025-12-28%20104121.png)
+![Screenshot 2025-12-28 104133.png](Screenshots/Screenshot%202025-12-28%20104133.png)
+![Screenshot 2025-12-28 104157.png](Screenshots/Screenshot%202025-12-28%20104157.png)
+![Screenshot 2025-12-28 104229.png](Screenshots/Screenshot%202025-12-28%20104229.png)
+![Screenshot 2025-12-28 104240.png](Screenshots/Screenshot%202025-12-28%20104240.png)
+![Screenshot 2025-12-28 104257.png](Screenshots/Screenshot%202025-12-28%20104257.png)
+![Screenshot 2025-12-28 104313.png](Screenshots/Screenshot%202025-12-28%20104313.png)
+![Screenshot 2025-12-28 104324.png](Screenshots/Screenshot%202025-12-28%20104324.png)
+![Screenshot 2025-12-28 104333.png](Screenshots/Screenshot%202025-12-28%20104333.png)
+![Screenshot 2025-12-28 104341.png](Screenshots/Screenshot%202025-12-28%20104341.png)
+
+
+**Built with ❤️ using React, Node.js, and Odoo-inspired UX principles**
+# GearGuard — The Ultimate Maintenance Tracker
+
+A comprehensive ERP-style maintenance management system built with React and Node.js, inspired by Odoo design principles.
 
 ## Project Overview
 
@@ -44,27 +75,20 @@ ORCHESTRATOR/
 - npm or yarn
 
 ### 1. Backend Setup
-
 ```bash
 cd backend
-
 # Install dependencies
 npm install
-
 # Configure environment
 cp .env.example .env
-# Edit .env with your database credentials
-
-# Setup database
-npx prisma generate
-npx prisma migrate dev
+# Set up database
+npx prisma migrate dev --name init
+# Seed database with test data
 npm run seed
-
 # Start backend
 npm run dev
-```
 
-Backend will run on `http://localhost:3000`
+```
 
 ### 2. Frontend Setup
 
@@ -146,8 +170,7 @@ Use these test credentials after seeding:
 
 ### Workflow State Machine
 ```
-NEW → IN_PROGRESS → REPAIRED
-                 → SCRAP
+NEW → IN_PROGRESS → REPAIRED → SCRAP
 ```
 
 **Rules**:
@@ -174,15 +197,6 @@ Full API documentation available at:
 - [Backend README](backend/README.md)
 - [API Endpoints](backend/README.md#api-endpoints)
 
-## Domain Documentation
-
-Critical domain knowledge (READ BEFORE CODING):
-1. [Domain Scope](docs/domain_scope.md)
-2. [Workflows](docs/workflows.md)
-3. [Data Models](docs/data_models.md)
-4. [UI Specification](docs/ui_spec.md)
-5. [Automations](docs/automations.md)
-6. [API Contracts](docs/api_contracts.md)
 
 ## Project Structure
 
@@ -261,32 +275,7 @@ npm run lint
 npm run type-check
 ```
 
-## Deployment
 
-### Backend Deployment
-- Deploy to: Heroku, Railway, AWS EC2, DigitalOcean
-- Set environment variables
-- Run migrations: `npx prisma migrate deploy`
-
-### Frontend Deployment
-- Deploy to: Vercel, Netlify, AWS S3+CloudFront
-- Set `VITE_API_URL` to production API
-- Build: `npm run build`
-
-### Environment Variables
-
-**Backend** (`.env`):
-```env
-DATABASE_URL=postgresql://...
-JWT_SECRET=your-secret
-PORT=3000
-CORS_ORIGIN=https://your-frontend.com
-```
-
-**Frontend** (`.env`):
-```env
-VITE_API_URL=https://your-api.com/api/v1
-```
 
 ## Troubleshooting
 
@@ -350,6 +339,12 @@ For issues or questions:
 1. Check documentation in `docs/`
 2. Review README files in `frontend/` and `backend/`
 3. Check GitHub issues
+
+---
+## Team Mamber
+
+- **[Mohit Suthar](https://github.com/MohitSutharOfficial)** — Backend Development (API, Database, Auth)
+- **[Ankit Sharma](https://github.com/Ankit-Sharma-17)** — Frontend Development (UI, Kanban, Calendar)
 
 ---
 

@@ -1,6 +1,16 @@
-// Database placeholder (Prisma removed)
-// If you need database functionality, reinstall Prisma and configure it
+import { logger } from '../utils/logger';
+import { testConnection } from './supabase';
 
-console.log('ℹ️  Database module (Prisma) not configured');
+export const connectDatabase = async (): Promise<void> => {
+  try {
+    const isConnected = await testConnection();
+    if (!isConnected) {
+      throw new Error('Failed to connect to Supabase');
+    }
+    logger.info('✅ Database connection established');
+  } catch (error) {
+    logger.error('❌ Database connection failed:', error);
+    throw error;
+  }
+};
 
-export default null;

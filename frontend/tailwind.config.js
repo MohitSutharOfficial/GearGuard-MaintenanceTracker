@@ -4,14 +4,15 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         odoo: {
-          primary: '#714B67',
-          secondary: '#875A7B',
-          accent: '#8F7BA1',
-          light: '#F0EEEE',
+          primary: '#7C7BAD',
+          secondary: '#9894C4',
+          accent: '#B4B1D8',
+          light: '#F0F0F3',
           border: '#DDDDDD',
           gray: {
             50: '#F9FAFB',

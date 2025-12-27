@@ -1,19 +1,18 @@
 import api from './api';
 
 export interface MaintenanceRequest {
-  id: number;
+  id: string;
   subject: string;
   description?: string;
   type: 'CORRECTIVE' | 'PREVENTIVE';
   priority: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL';
   stage: 'NEW' | 'IN_PROGRESS' | 'REPAIRED' | 'SCRAP';
-  equipmentId: number;
-  technicianId?: number;
+  equipmentId: string;
+  technician?: string;
   scheduledDate?: string;
   duration?: number;
   notes?: string;
   equipment?: any;
-  technician?: any;
   createdAt: string;
   updatedAt: string;
 }
@@ -26,36 +25,36 @@ export const requestService = {
     technicianId?: number;
     teamId?: number;
   }): Promise<MaintenanceRequest[]> {
-    const { data } = await api.get('/requests', { params: filters });
-    return data;
+    const { data } = await api.get('/maintenance-requests', { params: filters });
+    return data.data || data; // Handle wrapped response
   },
 
   async getOverdue(): Promise<MaintenanceRequest[]> {
-    const { data } = await api.get('/requests/overdue');
-    return data;
+    const { data } = await api.get('/maintenance-requests/overdue');
+    return data.data || data; // Handle wrapped response
   },
 
-  async getById(id: number): Promise<MaintenanceRequest> {
-    const { data } = await api.get(`/requests/${id}`);
-    return data;
+  async getById(id: string): Promise<MaintenanceRequest> {
+    const { data } = await api.get(`/maintenance-requests/${id}`);
+    return data.data || data; // Handle wrapped response
   },
 
   async create(request: Partial<MaintenanceRequest>): Promise<MaintenanceRequest> {
-    const { data } = await api.post('/requests', request);
-    return data;
+    const { data } = await api.post('/maintenance-requests', request);
+    return data.data || data; // Handle wrapped response
   },
 
-  async update(id: number, request: Partial<MaintenanceRequest>): Promise<MaintenanceRequest> {
-    const { data } = await api.patch(`/requests/${id}`, request);
-    return data;
+  async update(id: string, request: Partial<MaintenanceRequest>): Promise<MaintenanceRequest> {
+    const { data } = await api.patch(`/maintenance-requests/${id}`, request);
+    return data.data || data; // Handle wrapped response
   },
 
-  async updateStage(id: number, stage: string): Promise<MaintenanceRequest> {
-    const { data } = await api.patch(`/requests/${id}/stage`, { stage });
-    return data;
+  async updateStage(id: string, stage: string): Promise<MaintenanceRequest> {
+    const { data } = await api.patch(`/maintenance-requests/${id}/stage`, { stage });
+    return data.data || data; // Handle wrapped response
   },
 
-  async delete(id: number): Promise<void> {
-    await api.delete(`/requests/${id}`);
+  async delete(id: string): Promise<void> {
+    await api.delete(`/maintenance-requests/${id}`);
   },
 };

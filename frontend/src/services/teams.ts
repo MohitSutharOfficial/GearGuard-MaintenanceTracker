@@ -1,7 +1,7 @@
 import api from './api';
 
 export interface Team {
-  id: number;
+  id: string;
   name: string;
   description?: string;
   color?: string;
@@ -11,31 +11,31 @@ export interface Team {
 
 export const teamService = {
   async getAll(): Promise<Team[]> {
-    const { data } = await api.get('/teams');
-    return data;
+    const { data } = await api.get('/maintenance-teams');
+    return data.data || data; // Handle wrapped response
   },
 
-  async getById(id: number): Promise<Team> {
-    const { data } = await api.get(`/teams/${id}`);
-    return data;
+  async getById(id: string): Promise<Team> {
+    const { data } = await api.get(`/maintenance-teams/${id}`);
+    return data.data || data; // Handle wrapped response
   },
 
-  async getWorkload(id: number) {
-    const { data } = await api.get(`/teams/${id}/workload`);
-    return data;
+  async getWorkload(id: string) {
+    const { data } = await api.get(`/maintenance-teams/${id}/workload`);
+    return data.data || data; // Handle wrapped response
   },
 
   async create(team: Partial<Team>): Promise<Team> {
-    const { data } = await api.post('/teams', team);
-    return data;
+    const { data } = await api.post('/maintenance-teams', team);
+    return data.data || data; // Handle wrapped response
   },
 
-  async update(id: number, team: Partial<Team>): Promise<Team> {
-    const { data } = await api.patch(`/teams/${id}`, team);
-    return data;
+  async update(id: string, team: Partial<Team>): Promise<Team> {
+    const { data } = await api.patch(`/maintenance-teams/${id}`, team);
+    return data.data || data; // Handle wrapped response
   },
 
-  async delete(id: number): Promise<void> {
-    await api.delete(`/teams/${id}`);
+  async delete(id: string): Promise<void> {
+    await api.delete(`/maintenance-teams/${id}`);
   },
 };

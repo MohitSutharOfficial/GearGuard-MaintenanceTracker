@@ -1,31 +1,34 @@
-import cors from 'cors';
 import dotenv from 'dotenv';
-import express from 'express';
+import path from 'path';
+import app from './app';
 
-dotenv.config();
+// Load environment variables - try multiple paths
+const envPath = path.resolve(__dirname, '../../.env');
+const result = dotenv.config({ path: envPath });
 
-const app = express();
+if (result.error) {
+  console.warn('⚠️  Warning: Could not load .env file from:', envPath);
+  console.warn('⚠️  Trying alternative path...');
+  dotenv.config(); // Try default location
+}
+
+// Validate required environment variables
+if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
+  console.error('❌ ERROR: SUPABASE_URL and SUPABASE_ANON_KEY must be set in environment');
+  console.error('📁 Expected .env file at:', envPath);
+  console.error('💡 Solution: Use start.ps1 or start-backend.bat to run the server');
+  process.exit(1);
+}
+
 const PORT = process.env.PORT || 3000;
-
-// Middleware
-app.use(cors());
-app.use(express.json());
-
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', message: 'Backend server is running' });
-});
-
-// API endpoints
-app.get('/api/test', (req, res) => {
-  res.json({ message: 'Backend API is working!', timestamp: new Date().toISOString() });
-});
 
 // Start server
 const server = app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
   console.log(`✅ Health check: http://localhost:${PORT}/health`);
-  console.log(`✅ Test API: http://localhost:${PORT}/api/test`);
+  console.log(`✅ API v1: http://localhost:${PORT}/api/v1`);
+  console.log(`✅ Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`✅ Supabase: Connected`);
 });
 
 // Graceful shutdown

@@ -1,11 +1,11 @@
 import api from './api';
 
 export interface Equipment {
-  id: number;
+  id: string;
   name: string;
   code: string;
-  categoryId: number;
-  maintenanceTeamId: number;
+  categoryId: string;
+  maintenanceTeamId: string;
   location?: string;
   serialNumber?: string;
   manufacturer?: string;
@@ -26,30 +26,30 @@ export const equipmentService = {
     status?: string;
   }): Promise<Equipment[]> {
     const { data } = await api.get('/equipment', { params: filters });
-    return data;
+    return data.data || data; // Handle wrapped response
   },
 
-  async getById(id: number): Promise<Equipment> {
+  async getById(id: string): Promise<Equipment> {
     const { data } = await api.get(`/equipment/${id}`);
-    return data;
+    return data.data || data; // Handle wrapped response
   },
 
-  async getRequests(id: number) {
+  async getRequests(id: string) {
     const { data } = await api.get(`/equipment/${id}/requests`);
-    return data;
+    return data.data || data; // Handle wrapped response
   },
 
   async create(equipment: Partial<Equipment>): Promise<Equipment> {
     const { data } = await api.post('/equipment', equipment);
-    return data;
+    return data.data || data; // Handle wrapped response
   },
 
-  async update(id: number, equipment: Partial<Equipment>): Promise<Equipment> {
+  async update(id: string, equipment: Partial<Equipment>): Promise<Equipment> {
     const { data } = await api.patch(`/equipment/${id}`, equipment);
-    return data;
+    return data.data || data; // Handle wrapped response
   },
 
-  async delete(id: number): Promise<void> {
+  async delete(id: string): Promise<void> {
     await api.delete(`/equipment/${id}`);
   },
 };
