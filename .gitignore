@@ -9,5 +9,5 @@ dist-ssr
 *.log
 .github/copilot-instructions.md
 .vscode
-.ai-agents
-.docs
+ai-agents
+docs
