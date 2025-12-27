@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 font-sans;
+  }
+}
+
+@layer components {
+  /* Odoo-inspired styles */
+  .odoo-card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200;
+  }
+
+  .odoo-button {
+    @apply px-4 py-2 rounded font-medium transition-all duration-200;
+  }
+
+  .odoo-button-primary {
+    @apply bg-odoo-primary text-white hover:bg-odoo-secondary;
+  }
+
+  .odoo-button-secondary {
+    @apply bg-gray-200 text-gray-700 hover:bg-gray-300;
+  }
+
+  .odoo-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-odoo-primary focus:border-transparent;
+  }
+
+  .odoo-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+
+  .odoo-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .odoo-badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .odoo-badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  .odoo-badge-danger {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .odoo-badge-info {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .kanban-card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-3 cursor-pointer hover:shadow-md transition-shadow;
+  }
+
+  .kanban-column {
+    @apply bg-gray-100 rounded-lg p-4 min-h-screen;
+  }
+}

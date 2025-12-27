@@ -1,0 +1,13 @@
+node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.local
+.env.production
+.DS_Store
+*.log
+.github/copilot-instructions.md
+.vscode
+.ai-agents
+.docs
